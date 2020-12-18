@@ -8,18 +8,21 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import com.williammunsch.ironbody.databinding.ActivityMainBinding
+import com.williammunsch.ironbody.ui.main.MainViewModel
 import com.williammunsch.ironbody.ui.main.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(
+                this, R.layout.activity_main)
 
+        binding.viewPager.adapter = SectionsPagerAdapter(this, supportFragmentManager)
+        binding.tabs.setupWithViewPager(binding.viewPager)
+        binding.mainviewmodel = ViewModelProvider(this)[MainViewModel::class.java]
     }
 }

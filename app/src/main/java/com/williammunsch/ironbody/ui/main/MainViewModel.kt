@@ -8,6 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 
 
 class MainViewModel() : ViewModel() {
-
+    val userName: String = "William"
 
 }
