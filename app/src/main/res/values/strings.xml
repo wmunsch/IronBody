@@ -2,4 +2,12 @@
     <string name="app_name">Iron Body</string>
     <string name="tab_text_1">Home</string>
     <string name="tab_text_2">Workout</string>
+    <string name="bench_press">"Bench Press 5RM: "</string>
+    <string name="body_weight">"Body Weight: "</string>
+    <string name="stats">Current Stats</string>
+    <string name="one_mile_run">"1 Mile Run: "</string>
+    <string name="overhead_press">"Overhead Press 5RM: "</string>
+    <string name="chin_up">"Chin-up 5RM: "</string>
+    <string name="squat">"Squat 5RM: "</string>
+    <string name="dead_lift">"Deadlift 5RM: "</string>
 </resources>

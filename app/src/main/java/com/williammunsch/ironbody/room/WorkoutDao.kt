@@ -1,5 +1,6 @@
 package com.williammunsch.ironbody.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -22,6 +23,9 @@ interface WorkoutDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(exercise: CardioWorkoutModel)
+
+    @Query("SELECT weight FROM lifting_table WHERE lift_name = 'bench_press' ORDER BY weight ASC LIMIT 1")
+    fun getBenchMax5(): Flow<String>
 
 
 

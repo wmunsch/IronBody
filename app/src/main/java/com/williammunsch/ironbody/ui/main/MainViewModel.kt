@@ -1,13 +1,22 @@
 package com.williammunsch.ironbody.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import com.williammunsch.ironbody.room.WorkoutDao
 
 
-class MainViewModel() : ViewModel() {
+class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewModel() {
     val userName: String = "William"
+    val benchMax5: LiveData<String> = workoutRepository.benchMax5.asLiveData()
 
+
+}
+
+class MainViewModelFactory(private val repository: WorkoutRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return MainViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

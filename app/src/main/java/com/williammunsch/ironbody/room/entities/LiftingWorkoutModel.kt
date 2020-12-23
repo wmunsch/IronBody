@@ -10,7 +10,7 @@ data class LiftingWorkoutModel(
 
         @PrimaryKey(autoGenerate = true) val id: Int,
 
-        @ColumnInfo(name = "lift_name") val name: String,
+        @ColumnInfo(name = "lift_name") val life_name: String,
 
         @ColumnInfo(name = "sets") val sets: String,
 
