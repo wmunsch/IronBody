@@ -10,4 +10,9 @@
     <string name="chin_up">"Chin-up 5RM: "</string>
     <string name="squat">"Squat 5RM: "</string>
     <string name="dead_lift">"Deadlift 5RM: "</string>
+    <string name="history">Workout History</string>
+    <string name="lifting_workout">Start a new weight lifting workout</string>
+    <string name="cardio_workout">Start a new cardio exercise</string>
+    <string name="lift">Lift</string>
+    <string name="Run">Run</string>
 </resources>

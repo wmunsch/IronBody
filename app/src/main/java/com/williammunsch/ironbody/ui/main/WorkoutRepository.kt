@@ -7,11 +7,15 @@ import com.williammunsch.ironbody.room.entities.CardioWorkoutModel
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * The repository for the entire app.
+ */
 class WorkoutRepository( val workoutDao: WorkoutDao) {
 
     val allLiftingWorkouts: Flow<List<LiftingWorkoutModel>> = workoutDao.getLiftingWorkouts()
     val allCardioWorkouts: Flow<List<CardioWorkoutModel>> = workoutDao.getCardioWorkouts()
     val benchMax5: Flow<String> = workoutDao.getBenchMax5()
+
 
 
 
