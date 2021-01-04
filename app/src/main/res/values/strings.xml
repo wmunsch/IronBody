@@ -15,4 +15,20 @@
     <string name="cardio_workout">Start a new cardio exercise</string>
     <string name="lift">Lift</string>
     <string name="Run">Run</string>
+    <string name="sets">Sets</string>
+    <string name="weight">Weight</string>
+    <string name="benchp">BenchP</string>
+    <string name="ohp">OHP</string>
+    <string name="new_lift">New Lift</string>
+    <string name="finish">Finish</string>
+
+    <string-array name="lift_spinner">
+        <item>Choose</item>
+        <item>B-Press</item>
+        <item>OHP</item>
+        <item>Chin-up</item>
+        <item>BB Curl</item>
+        <item>Deadlift</item>
+        <item>Squat</item>
+    </string-array>
 </resources>

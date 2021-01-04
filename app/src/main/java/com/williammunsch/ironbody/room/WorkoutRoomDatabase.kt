@@ -6,10 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.williammunsch.ironbody.Converters
-import com.williammunsch.ironbody.room.entities.CardioWorkoutModel
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
 
-@Database(entities = [LiftingWorkoutModel::class,CardioWorkoutModel::class], version = 1, exportSchema = false)
+@Database(entities = [LiftingWorkoutModel::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 public abstract class WorkoutRoomDatabase : RoomDatabase() {
 

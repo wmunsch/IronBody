@@ -12,6 +12,7 @@
         android:theme="@style/Theme.IronBody">
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="stateUnchanged|adjustResize"
             android:label="@string/app_name"
             android:theme="@style/Theme.IronBody.NoActionBar">
             <intent-filter>

@@ -1,19 +1,17 @@
 package com.williammunsch.ironbody.ui.main
 
 import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
 import com.williammunsch.ironbody.room.WorkoutDao
-import com.williammunsch.ironbody.room.entities.CardioWorkoutModel
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
 import kotlinx.coroutines.flow.Flow
 
 /**
  * The repository for the entire app.
+ * Handles transferring date between the view model and ROOM
  */
 class WorkoutRepository( val workoutDao: WorkoutDao) {
 
     val allLiftingWorkouts: Flow<List<LiftingWorkoutModel>> = workoutDao.getLiftingWorkouts()
-    val allCardioWorkouts: Flow<List<CardioWorkoutModel>> = workoutDao.getCardioWorkouts()
     val benchMax5: Flow<String> = workoutDao.getBenchMax5()
 
 
@@ -25,9 +23,5 @@ class WorkoutRepository( val workoutDao: WorkoutDao) {
         workoutDao.insert(liftingWorkoutModel)
     }
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insert(cardioWorkoutModel: CardioWorkoutModel){
-        workoutDao.insert(cardioWorkoutModel)
-    }
+
 }

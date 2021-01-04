@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:visibility="@{mainviewmodel.codename, default=gone}"
-            app:layout_constraintBottom_toTopOf="@id/cardio_layout"
+            android:visibility="@{mainviewmodel.startNewVisibility, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -44,40 +44,234 @@
                 android:text="@string/lift"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cardio_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:visibility="@{mainviewmodel.codename, default=gone}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardio_layout">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:text="@string/cardio_workout" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:onClick="@{() -> mainviewmodel.startNewCardio()}"
-                android:text="@string/Run"/>
-        </LinearLayout>
+
+
+
+
 
         <ScrollView
             android:id="@+id/workout_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
+            android:visibility="@{mainviewmodel.finishButtonVisibility, default=gone}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/lift_buttons_layout"
             app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/workout_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{mainviewmodel.lift1Visibility, default=invisible}"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp">
+                    <Spinner
+                        android:id="@+id/spinner1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/lift_spinner"
+                        android:selectedItemPosition="@={mainviewmodel.lift1Type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/et1"/>
+
+                    <EditText
+                        android:id="@+id/et1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:text="@={mainviewmodel.lift1Weight}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/spinner1"
+                        app:layout_constraintEnd_toStartOf="@id/et2"/>
+
+                    <EditText
+                        android:id="@+id/et2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"
+                        android:hint="@string/sets"
+                        android:text="@={mainviewmodel.lift1Reps}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et1"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{mainviewmodel.lift2Visibility, default=invisible}"
+                    android:layout_marginBottom="20dp">
+                    <Spinner
+                        android:id="@+id/spinner2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/lift_spinner"
+                        android:selectedItemPosition="@={mainviewmodel.lift2Type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/et3"/>
+
+                    <EditText
+                        android:id="@+id/et3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:text="@={mainviewmodel.lift2Weight}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/spinner2"
+                        app:layout_constraintEnd_toStartOf="@id/et4"/>
+
+                    <EditText
+                        android:id="@+id/et4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"
+                        android:hint="@string/sets"
+                        android:text="@={mainviewmodel.lift2Reps}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et3"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{mainviewmodel.lift3Visibility, default=invisible}"
+                    android:layout_marginBottom="20dp">
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/lift_spinner"
+                        android:selectedItemPosition="@={mainviewmodel.lift3Type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/et5"/>
+
+                    <EditText
+                        android:id="@+id/et5"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:text="@={mainviewmodel.lift3Weight}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/spinner3"
+                        app:layout_constraintEnd_toStartOf="@id/et6"/>
+
+                    <EditText
+                        android:id="@+id/et6"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"
+                        android:hint="@string/sets"
+                        android:text="@={mainviewmodel.lift3Reps}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et5"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{mainviewmodel.lift4Visibility, default=invisible}"
+                    android:layout_marginBottom="20dp">
+                    <Spinner
+                        android:id="@+id/spinner4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/lift_spinner"
+                        android:selectedItemPosition="@={mainviewmodel.lift4Type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/et7"/>
+
+                    <EditText
+                        android:id="@+id/et7"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:text="@={mainviewmodel.lift4Weight}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/spinner4"
+                        app:layout_constraintEnd_toStartOf="@id/et8"/>
+
+                    <EditText
+                        android:id="@+id/et8"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"
+                        android:hint="@string/sets"
+                        android:text="@={mainviewmodel.lift4Reps}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et7"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{mainviewmodel.lift5Visibility, default=invisible}">
+                    <Spinner
+                        android:id="@+id/spinner5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/lift_spinner"
+                        android:selectedItemPosition="@={mainviewmodel.lift5Type}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/et9"/>
+
+                    <EditText
+                        android:id="@+id/et9"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:inputType="number"
+                        android:text="@={mainviewmodel.lift5Weight}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/spinner5"
+                        app:layout_constraintEnd_toStartOf="@id/et10"/>
+
+                    <EditText
+                        android:id="@+id/et10"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="datetime"
+                        android:hint="@string/sets"
+                        android:text="@={mainviewmodel.lift5Reps}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/et9"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
 
         </ScrollView>
 
@@ -102,7 +296,7 @@
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:text="BenchP"
+                    android:text="@string/benchp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +308,7 @@
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:text="OHP"
+                    android:text="@string/ohp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/button_squat"
@@ -127,7 +321,7 @@
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:text="Squat"
+                    android:text="@string/squat"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -145,7 +339,7 @@
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:text="Deadlift"
+                    android:text="@string/dead_lift"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +351,7 @@
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:text="Chin-up"
+                    android:text="@string/chin_up"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/button_deadlift"
@@ -179,7 +373,7 @@
                 android:id="@+id/new_lift_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Lift"
+                android:text="@string/new_lift"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
@@ -195,12 +389,13 @@
                 android:id="@+id/finish_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish"
+                android:text="@string/finish"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:layout_marginBottom="20dp"
-                android:visibility="@{mainviewmodel.liftButtonVisibility, default=gone}"
+                android:onClick="@{() -> mainviewmodel.finishWorkout()}"
+                android:visibility="@{mainviewmodel.finishButtonVisibility, default=gone}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
