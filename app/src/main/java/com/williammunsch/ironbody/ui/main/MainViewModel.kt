@@ -206,11 +206,22 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
         val c = Calendar.getInstance()
         val date = c.timeInMillis
 
-        //TODO: Currently only inserts the first workout on the page. Need to insert all 5
         if (lift1Type.value?.let {getLiftName(it)}!=null && lift1Weight.value != null && lift1Reps.value != null) {
-            println("inserting into db")
             insert(LiftingWorkoutModel(0,date,lift1Type.value?.let {getLiftName(it)}, lift1Weight.value!!.toInt() ,lift1Reps.value))
         }
+        if (lift2Type.value?.let {getLiftName(it)}!=null && lift2Weight.value != null && lift2Reps.value != null) {
+            insert(LiftingWorkoutModel(0,date,lift2Type.value?.let {getLiftName(it)}, lift2Weight.value!!.toInt() ,lift2Reps.value))
+        }
+        if (lift3Type.value?.let {getLiftName(it)}!=null && lift3Weight.value != null && lift3Reps.value != null) {
+            insert(LiftingWorkoutModel(0,date,lift3Type.value?.let {getLiftName(it)}, lift3Weight.value!!.toInt() ,lift3Reps.value))
+        }
+        if (lift4Type.value?.let {getLiftName(it)}!=null && lift4Weight.value != null && lift4Reps.value != null) {
+            insert(LiftingWorkoutModel(0,date,lift4Type.value?.let {getLiftName(it)}, lift4Weight.value!!.toInt() ,lift4Reps.value))
+        }
+        if (lift5Type.value?.let {getLiftName(it)}!=null && lift5Weight.value != null && lift5Reps.value != null) {
+            insert(LiftingWorkoutModel(0,date,lift5Type.value?.let {getLiftName(it)}, lift5Weight.value!!.toInt() ,lift5Reps.value))
+        }
+
         resetViews()
     }
 
