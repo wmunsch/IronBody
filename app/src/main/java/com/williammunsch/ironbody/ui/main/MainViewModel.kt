@@ -1,6 +1,9 @@
 package com.williammunsch.ironbody.ui.main
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
 import com.williammunsch.ironbody.room.entities.WeightModel
@@ -107,6 +110,7 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
         _startNewVisibility.value = View.GONE
         _newLiftButtonVisibility.value = View.VISIBLE
         _finishButtonVisibility.value = View.VISIBLE
+        lift1Visibility.value = View.VISIBLE
     }
 
     fun startNewWeightInput(){
@@ -232,7 +236,7 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
         workoutRepository.insert(workout)
     }
 
-
+    //Inserts a new weight with a date timestamp
     fun setNewWeight(){
         val c = Calendar.getInstance()
         val date = c.timeInMillis
@@ -255,6 +259,7 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
         _addWeightVisibility.value = View.GONE
         _startNewVisibility.value = View.VISIBLE
     }
+
 }
 
 //Create the view model factory

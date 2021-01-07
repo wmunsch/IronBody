@@ -4,11 +4,11 @@
     <string name="tab_text_2">Workout</string>
     <string name="bench_press">"Bench Press: "</string>
     <string name="body_weight">"Body Weight: "</string>
-    <string name="stats">Stats current/max in lbs</string>
+    <string name="stats">Stats current/max</string>
     <string name="one_mile_run">"1 Mile Run: "</string>
     <string name="overhead_press">"Overhead Press: "</string>
     <string name="chin_up">"Chin-up: "</string>
-    <string name="squat">"Squat current/max: "</string>
+    <string name="squat">"Squat: "</string>
     <string name="dead_lift">"Deadlift: "</string>
     <string name="history">Workout History</string>
     <string name="lifting_workout">Start a new weight lifting workout</string>
@@ -30,6 +30,7 @@
     <string name="dash">" - "</string>
     <string name="leftParan">" ("</string>
     <string name="rightParan">")"</string>
+    <string name="barbell_curl">"Barbell Curl: "</string>
 
     <string-array name="lift_spinner">
         <item>Choose</item>
