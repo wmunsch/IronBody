@@ -10,14 +10,14 @@ data class LiftingWorkoutModel(
 
         @PrimaryKey(autoGenerate = true) val id: Int,
 
-        @ColumnInfo(name = "date") val date: String?,
+        @ColumnInfo(name = "date") val date: Long,
 
-        @ColumnInfo(name = "lift_name1") val lift_name1: String?,
+        @ColumnInfo(name = "lift_name") val lift_name: String?,
 
-        @ColumnInfo(name = "weight1") val weight1: String?,
+        @ColumnInfo(name = "weight") val weight: Int,
 
-        @ColumnInfo(name = "repetitions1")  val repetitions1: String?,
-
+        @ColumnInfo(name = "repetitions")  val repetitions: String?,
+/*
         @ColumnInfo(name = "lift_name2") val lift_name2: String?,
 
         @ColumnInfo(name = "weight2") val weight2: String?,
@@ -41,5 +41,6 @@ data class LiftingWorkoutModel(
         @ColumnInfo(name = "weight5") val weight5: String?,
 
         @ColumnInfo(name = "repetitions5")  val repetitions5: String?
+        */
 
 )

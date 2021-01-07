@@ -3,7 +3,10 @@ package com.williammunsch.ironbody.ui.main
 import android.view.View
 import androidx.lifecycle.*
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
+import com.williammunsch.ironbody.room.entities.WeightModel
 import kotlinx.coroutines.launch
+import java.sql.Date
+import java.time.Instant
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -12,9 +15,26 @@ import java.util.*
  * The view model for the entire app.
  */
 class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewModel() {
-    val userName: String = "William"
-    val benchMax5: LiveData<String> = workoutRepository.benchMax5.asLiveData()
-    //Other stats will go here in the future
+
+    val historyListData: LiveData<List<LiftingWorkoutModel>> = workoutRepository.historyData.asLiveData()
+
+    val bodyWeight:LiveData<Int?> = workoutRepository.weight
+
+    val benchCurrent:LiveData<Int?> = workoutRepository.benchCurrent
+    val OHPCurrent:LiveData<Int?> = workoutRepository.OHPCurrent
+    val chinUpCurrent:LiveData<Int?> = workoutRepository.chinUpCurrent
+    val BBCurlCurrent:LiveData<Int?> = workoutRepository.BBCurlCurrent
+    val deadliftCurrent:LiveData<Int?> = workoutRepository.deadliftCurrent
+    val squatCurrent:LiveData<Int?> = workoutRepository.squatCurrent
+
+    val benchMax:LiveData<Int?> = workoutRepository.benchMax
+    val OHPMax:LiveData<Int?> = workoutRepository.OHPMax
+    val chinUpMax:LiveData<Int?> = workoutRepository.chinUpMax
+    val BBCurlMax:LiveData<Int?> = workoutRepository.BBCurlMax
+    val deadliftMax:LiveData<Int?> = workoutRepository.deadliftMax
+    val squatMax:LiveData<Int?> = workoutRepository.squatMax
+
+
 
     //Declare all of the visibility Ints for the buttons and layouts for the workout page
     private val _startNewVisibility = MutableLiveData<Int>()
@@ -29,6 +49,13 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
     private val _finishButtonVisibility = MutableLiveData<Int>()
     val finishButtonVisibility: LiveData<Int>
         get() = _finishButtonVisibility
+
+    private val _addWeightVisibility = MutableLiveData<Int>()
+    val addWeightVisibility: LiveData<Int>
+        get() = _addWeightVisibility
+
+    //String that holds body weight input
+    var bodyWeightInput = MutableLiveData<String>()
 
     //Ints that hold the number of the spinner choice
     var lift1Type = MutableLiveData<Int>()
@@ -59,12 +86,12 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
     val lift5Visibility = MutableLiveData<Int>()
 
 
-
     init {
         _startNewVisibility.value = View.VISIBLE
-        _workoutButtonLayoutVisibility.value = View.INVISIBLE
-        _newLiftButtonVisibility.value = View.INVISIBLE
-        _finishButtonVisibility.value = View.INVISIBLE
+        _workoutButtonLayoutVisibility.value = View.GONE
+        _newLiftButtonVisibility.value = View.GONE
+        _finishButtonVisibility.value = View.GONE
+        _addWeightVisibility.value = View.GONE
         lift1Visibility.value = View.INVISIBLE
         lift2Visibility.value = View.INVISIBLE
         lift3Visibility.value = View.INVISIBLE
@@ -80,6 +107,12 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
         _startNewVisibility.value = View.GONE
         _newLiftButtonVisibility.value = View.VISIBLE
         _finishButtonVisibility.value = View.VISIBLE
+    }
+
+    fun startNewWeightInput(){
+        _startNewVisibility.value = View.GONE
+        _addWeightVisibility.value = View.VISIBLE
+
     }
 
     /**
@@ -172,18 +205,13 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
     fun finishWorkout(){
         val c = Calendar.getInstance()
 
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        val date = c.timeInMillis
 
-        val dateFormatted = "$year-$month-$day"
-
-        insert(LiftingWorkoutModel(0,dateFormatted, lift1Type.value?.let { getLiftName(it) },lift1Weight.value,lift1Reps.value,
-                lift2Type.value?.let { getLiftName(it) },lift2Weight.value,lift2Reps.value,
-                lift3Type.value?.let { getLiftName(it) },lift3Weight.value,lift3Reps.value,
-                lift4Type.value?.let { getLiftName(it) },lift4Weight.value,lift4Reps.value,
-                lift5Type.value?.let { getLiftName(it) },lift5Weight.value,lift5Reps.value,))
-
+        //TODO: Currently only inserts the first workout on the page. Need to insert all 5
+        if (lift1Type.value?.let {getLiftName(it)}!=null && lift1Weight.value != null && lift1Reps.value != null) {
+            println("inserting into db")
+            insert(LiftingWorkoutModel(0,date,lift1Type.value?.let {getLiftName(it)}, lift1Weight.value!!.toInt() ,lift1Reps.value))
+        }
         resetViews()
     }
 
@@ -193,9 +221,33 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
     private fun insert(workout: LiftingWorkoutModel) = viewModelScope.launch {
         workoutRepository.insert(workout)
     }
+
+
+    fun setNewWeight(){
+        val c = Calendar.getInstance()
+        val date = c.timeInMillis
+
+        if (bodyWeightInput.value != null){
+            insert(WeightModel(0,date,bodyWeightInput.value!!.toInt()))
+        }
+
+        bodyWeightInput.value = null
+        _addWeightVisibility.value = View.GONE
+        _startNewVisibility.value = View.VISIBLE
+    }
+
+    private fun insert(weightModel: WeightModel) = viewModelScope.launch {
+        workoutRepository.insert(weightModel)
+    }
+
+    fun cancelWeightInput(){
+        bodyWeightInput.value = null
+        _addWeightVisibility.value = View.GONE
+        _startNewVisibility.value = View.VISIBLE
+    }
 }
 
-//Create the view model factory for the activity class
+//Create the view model factory
 class MainViewModelFactory(private val repository: WorkoutRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

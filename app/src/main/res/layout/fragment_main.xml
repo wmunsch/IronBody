@@ -18,8 +18,10 @@
         tools:context=".ui.main.MainFragment">
 
         <ScrollView
+            android:id="@+id/main_scrollview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="@+id/constraintLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,175 +31,240 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/stats" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/body_weight" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/one_mile_run" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/bench_press" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/overhead_press" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/chin_up" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/squat" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/dark_grey"
-                        android:layout_marginStart="@dimen/activity_horizontal_margin"
-                        android:text="@string/dead_lift" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:text='@{mainviewmodel.benchMax5 ?? "0"}' />
-                </LinearLayout>
-
-                <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@color/dark_grey"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/history"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/stats" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/body_weight" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.bodyWeight.toString() ?? "0"}' />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/bench_press" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.benchCurrent.toString() ?? "0"}' />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/slash" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.benchMax.toString() ?? "0"}' />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/overhead_press" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.OHPCurrent.toString() ?? "0"}' />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/slash" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.OHPMax.toString() ?? "0"}' />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/chin_up" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.chinUpCurrent.toString() ?? "0"}' />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/slash" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.chinUpMax.toString() ?? "0"}' />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/squat" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.squatCurrent.toString() ?? "0"}' />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/slash" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.squatMax.toString() ?? "0"}' />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/activity_vertical_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/dark_grey"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:text="@string/dead_lift" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.deadliftCurrent.toString() ?? "0"}' />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text="@string/slash" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:text='@{mainviewmodel.deadliftMax.toString() ?? "0"}' />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/dark_grey"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/history"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/history_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:minHeight="150dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+                </androidx.recyclerview.widget.RecyclerView>
+
             </LinearLayout>
+
+
+
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -20,32 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.IronBody.AppBarOverlay">
-            <LinearLayout
-                android:id="@+id/login_clickable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:orientation="horizontal"
-                android:layout_marginStart="5dp"
-                android:clickable="true"
-                android:focusable="true">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/ic_user_icon" />
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:minHeight="?actionBarSize"
-                    android:padding="@dimen/appbar_padding"
-                    android:text='@{mainviewmodel.userName, default = "Log in"}'
-                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
-
-            </LinearLayout>
-
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"

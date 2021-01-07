@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.ScrollView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.williammunsch.ironbody.databinding.ActivityMainBinding
 import com.williammunsch.ironbody.ui.main.MainViewModel
@@ -29,11 +30,15 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
                 this, R.layout.activity_main)
 
-        binding.lifecycleOwner = this
+
         binding.viewPager.adapter = SectionsPagerAdapter(this, supportFragmentManager)
         binding.tabs.setupWithViewPager(binding.viewPager)
         binding.mainviewmodel = mainViewModel
+        binding.lifecycleOwner = this
 
-        //ScrollView workoutScrollView = findViewById(R.id.workout_scrollview);
+
+        //mainViewModel.benchMax.observe(this, {})
+        //mainViewModel.benchMax.observe(lifecycle, Observer<String> {  })
+
     }
 }

@@ -2,14 +2,14 @@
     <string name="app_name">Iron Body</string>
     <string name="tab_text_1">Home</string>
     <string name="tab_text_2">Workout</string>
-    <string name="bench_press">"Bench Press 5RM: "</string>
+    <string name="bench_press">"Bench Press: "</string>
     <string name="body_weight">"Body Weight: "</string>
-    <string name="stats">Current Stats</string>
+    <string name="stats">Stats current/max in lbs</string>
     <string name="one_mile_run">"1 Mile Run: "</string>
-    <string name="overhead_press">"Overhead Press 5RM: "</string>
-    <string name="chin_up">"Chin-up 5RM: "</string>
-    <string name="squat">"Squat 5RM: "</string>
-    <string name="dead_lift">"Deadlift 5RM: "</string>
+    <string name="overhead_press">"Overhead Press: "</string>
+    <string name="chin_up">"Chin-up: "</string>
+    <string name="squat">"Squat current/max: "</string>
+    <string name="dead_lift">"Deadlift: "</string>
     <string name="history">Workout History</string>
     <string name="lifting_workout">Start a new weight lifting workout</string>
     <string name="cardio_workout">Start a new cardio exercise</string>
@@ -21,6 +21,13 @@
     <string name="ohp">OHP</string>
     <string name="new_lift">New Lift</string>
     <string name="finish">Finish</string>
+    <string name="slash">" / "</string>
+    <string name="set_body_weight">Set a new body weight</string>
+    <string name="set_weight">Set weight</string>
+    <string name="current_body_weight_in_lbs">Current body weight in lbs:</string>
+    <string name="cancel">Cancel</string>
+    <string name="colon">" : "</string>
+    <string name="dash">" - "</string>
 
     <string-array name="lift_spinner">
         <item>Choose</item>

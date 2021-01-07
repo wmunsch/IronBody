@@ -25,7 +25,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:visibility="@{mainviewmodel.startNewVisibility, default=gone}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/weight_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,8 +45,73 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:id="@+id/weight_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:visibility="@{mainviewmodel.startNewVisibility, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lifting_layout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@string/set_body_weight" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="@{() -> mainviewmodel.startNewWeightInput()}"
+                android:text="@string/set_weight"/>
 
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/weight_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:visibility="@{mainviewmodel.addWeightVisibility, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="@string/current_body_weight_in_lbs" />
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight"
+                android:inputType="number"
+                android:text="@={mainviewmodel.bodyWeightInput}"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:onClick="@{() -> mainviewmodel.setNewWeight()}"
+                android:text="@string/set_weight"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="@{() -> mainviewmodel.cancelWeightInput()}"
+                android:text="@string/cancel"/>
+        </LinearLayout>
 
 
         <ScrollView

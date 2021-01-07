@@ -1,0 +1,20 @@
+package com.williammunsch.ironbody.room.entities
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.sql.Date
+
+/**
+ * Model for the table that holds body weight data. Since there is only going to be one user
+ * there is no need for a user name.
+ */
+@Entity(tableName = "weight_table")
+data class WeightModel (
+        @PrimaryKey(autoGenerate = true) val id: Int,
+
+        @ColumnInfo(name = "date") val date: Long,
+
+        @ColumnInfo(name = "body_weight") val body_weight: Int
+
+)

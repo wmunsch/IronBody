@@ -5,51 +5,60 @@
     xmlns:tools="http://schemas.android.com/tools">
 <data>
     <variable
+        name="date"
+        type="String"
+        />
+    <variable
+        name="lifts"
+        type="String"
+        />
+    <variable
         name="mainviewmodel"
         type="com.williammunsch.ironbody.ui.main.MainViewModel"
         />
 </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="6dp"
+    android:layout_marginStart="8dp">
 
-
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/date_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/et1"/>
-
-    <EditText
-        android:id="@+id/et1"
-        android:layout_width="100dp"
+        android:text=""
+        android:textSize="16sp"
+        android:textColor="@color/dark_grey"
+        />
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Weight"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/button"
-        app:layout_constraintEnd_toStartOf="@id/et2"/>
-
-    <EditText
-        android:id="@+id/et2"
-        android:layout_width="100dp"
+        android:text="@string/dash"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/lift_items_textview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Sets"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/et1"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text=""
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/lift_items_textview_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+</LinearLayout>
 
 </layout>
