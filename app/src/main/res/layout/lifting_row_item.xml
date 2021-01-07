@@ -59,6 +59,25 @@
         android:text=""
         android:textSize="16sp"
         android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leftParan"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/lift_items_textview_reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rightParan"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 </LinearLayout>
 
 </layout>

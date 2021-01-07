@@ -36,9 +36,5 @@ class MainActivity : AppCompatActivity() {
         binding.mainviewmodel = mainViewModel
         binding.lifecycleOwner = this
 
-
-        //mainViewModel.benchMax.observe(this, {})
-        //mainViewModel.benchMax.observe(lifecycle, Observer<String> {  })
-
     }
 }

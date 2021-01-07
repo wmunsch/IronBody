@@ -14,23 +14,22 @@ import kotlinx.coroutines.flow.Flow
  * Handles transferring date between the view model and ROOM
  */
 class WorkoutRepository(private val workoutDao: WorkoutDao) {
-
+    //The list of the most recent 250 workout lifts
     val historyData: Flow<List<LiftingWorkoutModel>> = workoutDao.getLiftingWorkouts()
 
-
+    //Retrieving the most recent body weight entry
     private val weightData: LiveData<WeightModel> = workoutDao.getMostRecentWeight()
-
     val weight = Transformations.map(weightData){ _ ->
         weightData.value?.body_weight
     }
 
-    //Current
-    val benchLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getBenchCurrent()
-    val OHPLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getOHPCurrent()
-    val chinUpLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getChinUpCurrent()
-    val BBCurlLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getBBCurlCurrent()
-    val deadliftLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getDeadliftCurrent()
-    val squatLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getSquatCurrent()
+    //Current/most recent workout weights for each type and the transforms to retrieve the Int
+    private val benchLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getBenchCurrent()
+    private val OHPLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getOHPCurrent()
+    private val chinUpLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getChinUpCurrent()
+    private val BBCurlLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getBBCurlCurrent()
+    private val deadliftLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getDeadCurrent()
+    private val squatLiftCurrent: LiveData<LiftingWorkoutModel> = workoutDao.getSquatCurrent()
 
     val benchCurrent = Transformations.map(benchLiftCurrent){ _ ->
         benchLiftCurrent.value?.weight
@@ -45,20 +44,20 @@ class WorkoutRepository(private val workoutDao: WorkoutDao) {
         BBCurlLiftCurrent.value?.weight
     }
     val deadliftCurrent = Transformations.map(deadliftLiftCurrent){ _ ->
-        BBCurlLiftCurrent.value?.weight
+        deadliftLiftCurrent.value?.weight
     }
     val squatCurrent = Transformations.map(squatLiftCurrent){ _ ->
         squatLiftCurrent.value?.weight
     }
 
 
-    //Max
-    val benchLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getBenchMax()
-    val OHPLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getOHPMax()
-    val chinUpLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getChinUpMax()
-    val BBCurlLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getBBCurlMax()
-    val deadliftLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getDeadliftMax()
-    val squatLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getSquatMax()
+    //Max workout weights and transforms to retrieve the Int
+    private val benchLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getBenchMax()
+    private val OHPLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getOHPMax()
+    private val chinUpLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getChinUpMax()
+    private val BBCurlLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getBBCurlMax()
+    private val deadliftLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getDeadMax()
+    private val squatLiftMax: LiveData<LiftingWorkoutModel> = workoutDao.getSquatMax()
 
     val benchMax = Transformations.map(benchLiftMax){ _ ->
         benchLiftMax.value?.weight
@@ -73,7 +72,7 @@ class WorkoutRepository(private val workoutDao: WorkoutDao) {
         BBCurlLiftMax.value?.weight
     }
     val deadliftMax = Transformations.map(deadliftLiftMax){ _ ->
-        BBCurlLiftMax.value?.weight
+        deadliftLiftMax.value?.weight
     }
     val squatMax = Transformations.map(squatLiftMax){ _ ->
         squatLiftMax.value?.weight

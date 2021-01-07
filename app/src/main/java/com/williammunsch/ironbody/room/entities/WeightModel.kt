@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 import java.sql.Date
 
 /**
- * Model for the table that holds body weight data. Since there is only going to be one user
- * there is no need for a user name.
+ * Model for the table that holds body weight data.
  */
 @Entity(tableName = "weight_table")
 data class WeightModel (

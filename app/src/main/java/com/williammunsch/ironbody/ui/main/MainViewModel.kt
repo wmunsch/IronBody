@@ -204,7 +204,6 @@ class MainViewModel(private val workoutRepository: WorkoutRepository) : ViewMode
      */
     fun finishWorkout(){
         val c = Calendar.getInstance()
-
         val date = c.timeInMillis
 
         //TODO: Currently only inserts the first workout on the page. Need to insert all 5

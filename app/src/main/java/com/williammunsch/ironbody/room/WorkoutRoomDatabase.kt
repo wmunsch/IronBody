@@ -4,13 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.williammunsch.ironbody.Converters
 import com.williammunsch.ironbody.room.entities.LiftingWorkoutModel
 import com.williammunsch.ironbody.room.entities.WeightModel
 
 @Database(entities = [LiftingWorkoutModel::class, WeightModel::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
 public abstract class WorkoutRoomDatabase : RoomDatabase() {
 
     abstract fun workoutDao(): WorkoutDao

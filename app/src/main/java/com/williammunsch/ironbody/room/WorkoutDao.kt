@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WorkoutDao {
 
-    @Query("SELECT * FROM lifting_table ORDER BY date DESC")
+    @Query("SELECT * FROM lifting_table ORDER BY date DESC LIMIT 250")
     fun getLiftingWorkouts(): Flow<List<LiftingWorkoutModel>>
 
 
@@ -18,8 +18,6 @@ interface WorkoutDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(weight: WeightModel)
-
-
 
 
     @Query("SELECT * FROM weight_table ORDER BY date DESC LIMIT 1")
@@ -39,7 +37,7 @@ interface WorkoutDao {
     fun getBBCurlCurrent(): LiveData<LiftingWorkoutModel>
 
     @Query("SELECT * FROM lifting_table WHERE lift_name = 'Deadlift' ORDER BY date DESC LIMIT 1")
-    fun getDeadliftCurrent(): LiveData<LiftingWorkoutModel>
+    fun getDeadCurrent(): LiveData<LiftingWorkoutModel>
 
     @Query("SELECT * FROM lifting_table WHERE lift_name = 'Squat' ORDER BY date DESC LIMIT 1")
     fun getSquatCurrent(): LiveData<LiftingWorkoutModel>
@@ -58,15 +56,10 @@ interface WorkoutDao {
     fun getBBCurlMax(): LiveData<LiftingWorkoutModel>
 
     @Query("SELECT * FROM lifting_table WHERE lift_name = 'Deadlift' ORDER BY weight DESC LIMIT 1")
-    fun getDeadliftMax(): LiveData<LiftingWorkoutModel>
+    fun getDeadMax(): LiveData<LiftingWorkoutModel>
 
     @Query("SELECT * FROM lifting_table WHERE lift_name = 'Squat' ORDER BY weight DESC LIMIT 1")
     fun getSquatMax(): LiveData<LiftingWorkoutModel>
-
-    //returns flow instead of livedata
-    // @Query("SELECT weight1 FROM lifting_table WHERE lift_name1 = 'bench_press' ORDER BY weight1 ASC LIMIT 1")
-    //fun getBenchMax5(): Flow<String>
-
 
 
 }

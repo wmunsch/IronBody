@@ -28,6 +28,8 @@
     <string name="cancel">Cancel</string>
     <string name="colon">" : "</string>
     <string name="dash">" - "</string>
+    <string name="leftParan">" ("</string>
+    <string name="rightParan">")"</string>
 
     <string-array name="lift_spinner">
         <item>Choose</item>
